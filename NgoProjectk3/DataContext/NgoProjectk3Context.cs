@@ -18,6 +18,11 @@ namespace NgoProjectk3.DataContext
         public NgoProjectk3Context() : base("name=NgoProjectk3Context")
         {
         }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<NgoProjectk3Context>(null);
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
         public System.Data.Entity.DbSet<NgoProjectk3.Models.Account> Accounts { get; set; }
     }

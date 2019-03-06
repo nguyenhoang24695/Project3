@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using NgoProjectk3.DataContext;
 using NgoProjectk3.Models;
+using SecurityHandle;
 
 namespace NgoProjectk3.Controllers
 {
@@ -49,17 +50,19 @@ namespace NgoProjectk3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,UserName,Password,FullName,Gender,Address,BirthDay,Email,Phone")] Account account)
         {
-            return Json(account);
-            //if (ModelState.IsValid)
-            //{
-            //    return Json(account);
-            //    db.Accounts.Add(account);
-            //    return Json("1");
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            account.Salt = PasswordHandle.GetInstance().GenerateSalt();
+            account.Password = PasswordHandle.GetInstance().EncryptPassword(account.Password, account.Salt);
+            //return Json(account);
+            if (ModelState.IsValid)
+            {
+                //return Json(account);
+                db.Accounts.Add(account);
+                //return Json(account);
+                db.SaveChanges();
+                return RedirectToAction("/Home");
+            }
 
-            //return View(account);
+            return View(account);
         }
 
         // GET: Accounts/Edit/5
@@ -118,6 +121,45 @@ namespace NgoProjectk3.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        // GET: Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Accounts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login([Bind(Include = "UserName,Password")] Account account)
+        {
+            var existAccount = db.Accounts.FirstOrDefault(a => a.UserName == account.UserName);
+            if (existAccount != null)
+            {
+                account.Password = SecurityHandle.PasswordHandle.GetInstance()
+                    .EncryptPassword(account.Password, existAccount.Salt);
+                if (existAccount.Password == account.Password)
+                {
+                    return Json("Login OK");
+                }
+                return Json("Wrong Password");
+            }
+            return Json("Tài khoản không tồn tại");
+            
+            if (ModelState.IsValid)
+            {
+                //return Json(account);
+                db.Accounts.Add(account);
+                //return Json(account);
+                db.SaveChanges();
+                return RedirectToAction("/Home");
+            }
+
+            return View(account);
+        }
+
 
         protected override void Dispose(bool disposing)
         {
