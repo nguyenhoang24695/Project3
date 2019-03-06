@@ -2,104 +2,121 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using NgoProjectk3.Data;
+using System.Web;
+using System.Web.Mvc;
+using NgoProjectk3.DataContext;
 using NgoProjectk3.Models;
 
 namespace NgoProjectk3.Controllers
 {
-    public class AccountsController : ApiController
+    public class AccountsController : Controller
     {
         private NgoProjectk3Context db = new NgoProjectk3Context();
 
-        // GET: api/Accounts
-        public IQueryable<Account> GetAccounts()
+        // GET: Accounts
+        public ActionResult Index()
         {
-            return db.Accounts;
+            return View(db.Accounts.ToList());
         }
 
-        // GET: api/Accounts/5
-        [ResponseType(typeof(Account))]
-        public IHttpActionResult GetAccount(int id)
+        // GET: Accounts/Details/5
+        public ActionResult Details(int? id)
         {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
             Account account = db.Accounts.Find(id);
             if (account == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
-
-            return Ok(account);
+            return View(account);
         }
 
-        // PUT: api/Accounts/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutAccount(int id, Account account)
+        // GET: Accounts/Create
+        public ActionResult Create()
         {
-            if (!ModelState.IsValid)
+            return View();
+        }
+
+        // POST: Accounts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "Id,UserName,Password,FullName,Gender,Address,BirthDay,Email,Phone")] Account account)
+        {
+            return Json(account);
+            //if (ModelState.IsValid)
+            //{
+            //    return Json(account);
+            //    db.Accounts.Add(account);
+            //    return Json("1");
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+
+            //return View(account);
+        }
+
+        // GET: Accounts/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            if (id != account.Id)
+            Account account = db.Accounts.Find(id);
+            if (account == null)
             {
-                return BadRequest();
+                return HttpNotFound();
             }
+            return View(account);
+        }
 
-            db.Entry(account).State = EntityState.Modified;
-
-            try
+        // POST: Accounts/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,UserName,Password,Salt,Role,Status,FullName,Gender,Address,BirthDay,Email,Phone,CreatedAt,UpdatedAt,DeletedAt")] Account account)
+        {
+            if (ModelState.IsValid)
             {
+                db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!AccountExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return View(account);
         }
 
-        // POST: api/Accounts
-        [ResponseType(typeof(Account))]
-        public IHttpActionResult PostAccount(Account account)
+        // GET: Accounts/Delete/5
+        public ActionResult Delete(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return BadRequest(ModelState);
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-
-            db.Accounts.Add(account);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = account.Id }, account);
-        }
-
-        // DELETE: api/Accounts/5
-        [ResponseType(typeof(Account))]
-        public IHttpActionResult DeleteAccount(int id)
-        {
             Account account = db.Accounts.Find(id);
             if (account == null)
             {
-                return NotFound();
+                return HttpNotFound();
             }
+            return View(account);
+        }
 
+        // POST: Accounts/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Account account = db.Accounts.Find(id);
             db.Accounts.Remove(account);
             db.SaveChanges();
-
-            return Ok(account);
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
@@ -109,11 +126,6 @@ namespace NgoProjectk3.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        private bool AccountExists(int id)
-        {
-            return db.Accounts.Count(e => e.Id == id) > 0;
         }
     }
 }
