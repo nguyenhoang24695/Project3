@@ -139,6 +139,11 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\Credential.cs" />
+    <Compile Include="Models\DonateProgram.cs" />
+    <Compile Include="Models\Donation.cs" />
+    <Compile Include="Models\Interested.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

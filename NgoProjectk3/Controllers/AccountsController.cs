@@ -135,6 +135,7 @@ namespace NgoProjectk3.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login([Bind(Include = "UserName,Password")] Account account)
         {
+            
             var existAccount = db.Accounts.FirstOrDefault(a => a.UserName == account.UserName);
             if (existAccount != null)
             {
@@ -142,7 +143,13 @@ namespace NgoProjectk3.Controllers
                     .EncryptPassword(account.Password, existAccount.Salt);
                 if (existAccount.Password == account.Password)
                 {
-                    return Json("Login OK");
+                    var cr = new Credential();
+                    cr.AccessToken = SecurityHandle.TokenHandle.GetInstance().GenerateToken();
+                    cr.OwnerId = existAccount.Id;
+                    db.Credentials.Add(cr);
+                    db.SaveChanges();
+                    
+                    return Json(cr);
                 }
                 return Json("Wrong Password");
             }
