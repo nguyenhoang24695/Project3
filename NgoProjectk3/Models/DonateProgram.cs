@@ -20,7 +20,9 @@ namespace NgoProjectk3.Models
         public string Name { get; set; }
         public string Content { get; set; }
         public ProgramStatus Status { get; set; }
+        [DataType(DataType.Date)]
         public DateTime StartedAt { get; set; }
+        [DataType(DataType.Date)]
         public DateTime EndedAt { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
