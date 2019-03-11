@@ -135,6 +135,7 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\DonateProgramsController.cs" />
+    <Compile Include="Controllers\DonationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DataContext\NgoProjectk3Context.cs" />
     <Compile Include="Global.asax.cs">
@@ -293,6 +294,11 @@
     <Content Include="Views\Categories\Details.cshtml" />
     <Content Include="Views\Categories\Edit.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Donations\Create.cshtml" />
+    <Content Include="Views\Donations\Delete.cshtml" />
+    <Content Include="Views\Donations\Details.cshtml" />
+    <Content Include="Views\Donations\Edit.cshtml" />
+    <Content Include="Views\Donations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,75 @@
+﻿@model NgoProjectk3.Models.Donation
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Donation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProgramId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProgramId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeletedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeletedAt)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
