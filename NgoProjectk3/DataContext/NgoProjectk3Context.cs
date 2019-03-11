@@ -20,5 +20,7 @@ namespace NgoProjectk3.DataContext
         }
 
         public System.Data.Entity.DbSet<NgoProjectk3.Models.Account> Accounts { get; set; }
+
+        public System.Data.Entity.DbSet<NgoProjectk3.Models.Category> Categories { get; set; }
     }
 }
