@@ -49,7 +49,7 @@ namespace NgoProjectk3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,CategoryId,Name,Content,StartedAt,EndedAt,CreatedAt,UpdatedAt,DeletedAt")] DonateProgram donateProgram)
+        public ActionResult Create([Bind(Include = "Id,CategoryId,Name,Content,StartedAt,EndedAt,ThumbnailUrl,Amount")] DonateProgram donateProgram)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace NgoProjectk3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,CategoryId,Name,Content,StartedAt,EndedAt,CreatedAt,UpdatedAt,DeletedAt")] DonateProgram donateProgram)
+        public ActionResult Edit([Bind(Include = "Id,CategoryId,Name,Content,StartedAt,EndedAt,ThumbnailUrl,Amount")] DonateProgram donateProgram)
         {
             if (ModelState.IsValid)
             {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -19,7 +20,10 @@ namespace NgoProjectk3.Models
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
+        [DisplayName("Fundraising Money")]
         public long Amount { get; set; }
+
+        public string ThumbnailUrl { get; set; }
         public ProgramStatus Status { get; set; }
         [DataType(DataType.Date)]
         public DateTime StartedAt { get; set; }
