@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -17,16 +18,25 @@ namespace NgoProjectk3.Models
         }
         [Key]
         public int Id { get; set; }
+        [DisplayName("UserName")]
         public string UserName { get; set; }
+        [DisplayName("Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Salt { get; set; }
         public int Role { get; set; }
         public AccountStatus Status { get; set; }
+        [DisplayName("Full Name ")]
         public string FullName { get; set; }
+        [DisplayName("Gender")]
         public int Gender { get; set; }
+        [DisplayName("Address")]
         public string Address { get; set; }
+        [DisplayName("BrithDay")]
         public DateTime BirthDay { get; set; }
+        [DisplayName("Email")]
         public string Email { get; set; }
+        [DisplayName("Phone Number")]
         public string Phone { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
