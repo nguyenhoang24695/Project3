@@ -32,7 +32,7 @@ namespace NgoProjectk3.Models
         public int Gender { get; set; }
         [DisplayName("Address")]
         public string Address { get; set; }
-        [DisplayName("BrithDay")]
+        [DataType(DataType.Date)]
         public DateTime BirthDay { get; set; }
         [DisplayName("Email")]
         public string Email { get; set; }

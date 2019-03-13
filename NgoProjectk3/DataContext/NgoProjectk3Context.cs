@@ -18,7 +18,17 @@ namespace NgoProjectk3.DataContext
         public NgoProjectk3Context() : base("name=NgoProjectk3Context")
         {
         }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    Database.SetInitializer<NgoProjectk3Context>(null);
+        //    base.OnModelCreating(modelBuilder);
+        //}
 
         public System.Data.Entity.DbSet<NgoProjectk3.Models.Account> Accounts { get; set; }
+        public System.Data.Entity.DbSet<NgoProjectk3.Models.Category> Categories { get; set; }
+        public System.Data.Entity.DbSet<NgoProjectk3.Models.DonateProgram> DonatePrograms { get; set; }
+        public System.Data.Entity.DbSet<NgoProjectk3.Models.Donation> Donations { get; set; }
+        public System.Data.Entity.DbSet<NgoProjectk3.Models.Credential> Credentials { get; set; }
+        public System.Data.Entity.DbSet<NgoProjectk3.Models.Interested> Interesteds { get; set; }
     }
 }
