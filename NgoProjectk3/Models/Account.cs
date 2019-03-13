@@ -26,7 +26,7 @@ namespace NgoProjectk3.Models
         public string Salt { get; set; }
         public int Role { get; set; }
         public AccountStatus Status { get; set; }
-        [DisplayName("Full Name ")]
+        [DisplayName("FullName ")]
         public string FullName { get; set; }
         [DisplayName("Gender")]
         public int Gender { get; set; }
@@ -36,7 +36,7 @@ namespace NgoProjectk3.Models
         public DateTime BirthDay { get; set; }
         [DisplayName("Email")]
         public string Email { get; set; }
-        [DisplayName("Phone Number")]
+        [DisplayName("PhoneNumber")]
         public string Phone { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
