@@ -244,7 +244,7 @@
     <Content Include="Content\news.html" />
     <Content Include="Content\portfolio.html" />
     <Content Include="Content\single-causes.html" />
-    <Content Include="Content\style.css" />
+    <Content Include="Content\css\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
