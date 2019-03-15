@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -65,6 +66,9 @@ namespace NgoProjectk3.Controllers
             if (ModelState.IsValid)
             {
                 db.Donations.Add(donation);
+                var currentProgram = db.DonatePrograms.Find(donation.ProgramId);
+                currentProgram.DonatedMoney += (long)donation.Amount;
+                db.DonatePrograms.AddOrUpdate(currentProgram);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
