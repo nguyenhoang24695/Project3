@@ -2470,9 +2470,3 @@ h3 {
     background-color: #9C27B0;
 }
 
-@media (max-width:991px) {
-    .isd-alo-phone {
-        bottom: 46px;
-        right: -5px;
-    }
-}
