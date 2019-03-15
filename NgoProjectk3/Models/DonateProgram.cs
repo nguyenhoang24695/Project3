@@ -21,7 +21,7 @@ namespace NgoProjectk3.Models
         public int CategoryId { get; set; }
         public string Name { get; set; }
         public string Content { get; set; }
-        [DisplayName("Fundraising Money")]
+        [DisplayName("FundRaising Money")]
         public long Amount { get; set; }
         public long? DonatedMoney { get; set; }
 
