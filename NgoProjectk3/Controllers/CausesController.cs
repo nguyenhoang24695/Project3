@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using NgoProjectk3.DataContext;
 
 namespace NgoProjectk3.Controllers
 {
     public class CausesController : Controller
     {
+        private NgoProjectk3Context db = new NgoProjectk3Context();
         // GET: Causes
         public ActionResult Index()
         {
-            return View();
+            var donatePrograms = db.DonatePrograms.Include(d => d.Category);
+            return View(donatePrograms.ToList());
         }
 
         // GET: Causes/Details/5
