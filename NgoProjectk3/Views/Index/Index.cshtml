@@ -1,45 +1,13 @@
-﻿@model IEnumerable<NgoProjectk3.Models.DonateProgram>
+﻿
 @{
-    ViewBag.Current = "Home";
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
 
 <div class="swiper-container hero-slider">
     <div class="swiper-wrapper">
-
-        @foreach (var item in Model)
-        {
-            <div class="swiper-slide hero-content-wrap">
-                <img src="@Html.DisplayFor(modelItem => item.ThumbnailUrl)" alt="">
-
-                <div class="hero-content-overlay position-absolute w-100 h-100">
-                    <div class="container h-100">
-                        <div class="row h-100">
-                            <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-start">
-                                <header class="entry-header">
-                                    <h1>Donate</h1>
-                                    <h4>@Html.DisplayFor(modelItem => item.Name)</h4>
-                                </header><!-- .entry-header -->
-
-                                <div class="entry-content mt-4">
-                                    <p>@Html.DisplayFor(modelItem => item.Content)</p>
-                                </div><!-- .entry-content -->
-
-                                <footer class="entry-footer d-flex flex-wrap align-items-center mt-5">
-                                    <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
-                                    <a href="#" class="btn orange-border">Read More</a>
-                                </footer><!-- .entry-footer -->
-                            </div><!-- .col -->
-                        </div><!-- .row -->
-                    </div><!-- .container -->
-                </div><!-- .hero-content-overlay -->
-            </div><!-- .hero-content-wrap -->
-        }
-        
-
-        @*<div class="swiper-slide hero-content-wrap">
-            <img src="/Content/images/hero.jpg" alt="">
+        <div class="swiper-slide hero-content-wrap">
+            <img src="images/hero.jpg" alt="">
 
             <div class="hero-content-overlay position-absolute w-100 h-100">
                 <div class="container h-100">
@@ -65,7 +33,7 @@
         </div><!-- .hero-content-wrap -->
 
         <div class="swiper-slide hero-content-wrap">
-            <img src="/Content/images/hero.jpg" alt="">
+            <img src="images/hero.jpg" alt="">
 
             <div class="hero-content-overlay position-absolute w-100 h-100">
                 <div class="container h-100">
@@ -88,7 +56,33 @@
                     </div><!-- .row -->
                 </div><!-- .container -->
             </div><!-- .hero-content-overlay -->
-        </div><!-- .hero-content-wrap -->*@
+        </div><!-- .hero-content-wrap -->
+
+        <div class="swiper-slide hero-content-wrap">
+            <img src="images/hero.jpg" alt="">
+
+            <div class="hero-content-overlay position-absolute w-100 h-100">
+                <div class="container h-100">
+                    <div class="row h-100">
+                        <div class="col-12 col-lg-8 d-flex flex-column justify-content-center align-items-start">
+                            <header class="entry-header">
+                                <h1>Donate</h1>
+                                <h4>4 a better world</h4>
+                            </header><!-- .entry-header -->
+
+                            <div class="entry-content mt-4">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tempus vestibulum mauris quis aliquam. Integer accumsan sodales odio, id tempus ullamcorper</p>
+                            </div><!-- .entry-content -->
+
+                            <footer class="entry-footer d-flex flex-wrap align-items-center mt-5">
+                                <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
+                                <a href="#" class="btn orange-border">Read More</a>
+                            </footer><!-- .entry-footer -->
+                        </div><!-- .col -->
+                    </div><!-- .row -->
+                </div><!-- .container -->
+            </div><!-- .hero-content-overlay -->
+        </div><!-- .hero-content-wrap -->
     </div><!-- .swiper-wrapper -->
 
     <div class="pagination-wrap position-absolute w-100">
@@ -146,8 +140,8 @@
             <div class="col-12 col-md-6 col-lg-4 mt-4 mt-lg-0">
                 <div class="icon-box">
                     <figure class="d-flex justify-content-center">
-                        <img src="/Content/images/charity-gray.png" alt="">
-                        <img src="/Content/images/charity-white.png" alt="">
+                        <img src="images/charity-gray.png" alt="">
+                        <img src="images/charity-white.png" alt="">
                     </figure>
 
                     <header class="entry-header">
@@ -183,7 +177,7 @@
             </div><!-- .col -->
 
             <div class="col-12 col-lg-6 mt-4 order-1 order-lg-2">
-                <img src="/Content/images/welcome.jpg" alt="welcome">
+                <img src="images/welcome.jpg" alt="welcome">
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->
@@ -200,7 +194,7 @@
 
                     <div class="event-wrap d-flex flex-wrap justify-content-between">
                         <figure class="m-0">
-                            <img src="/Content/images/event-1.jpg" alt="">
+                            <img src="images/event-1.jpg" alt="">
                         </figure>
 
                         <div class="event-content-wrap">
@@ -228,7 +222,7 @@
 
                     <div class="event-wrap d-flex flex-wrap justify-content-between">
                         <figure class="m-0">
-                            <img src="/Content/images/event-2.jpg" alt="">
+                            <img src="images/event-2.jpg" alt="">
                         </figure>
 
                         <div class="event-content-wrap">
@@ -256,7 +250,7 @@
 
                     <div class="event-wrap d-flex flex-wrap justify-content-between">
                         <figure class="m-0">
-                            <img src="/Content/images/event-3.jpg" alt="">
+                            <img src="images/event-3.jpg" alt="">
                         </figure>
 
                         <div class="event-content-wrap">
@@ -292,7 +286,7 @@
 
                     <div class="cause-wrap d-flex flex-wrap justify-content-between">
                         <figure class="m-0">
-                            <img src="/Content/images/featured-causes.jpg" alt="">
+                            <img src="images/featured-causes.jpg" alt="">
                         </figure>
 
                         <div class="cause-content-wrap">
@@ -360,7 +354,7 @@
                         <div class="swiper-slide">
                             <div class="cause-wrap">
                                 <figure class="m-0">
-                                    <img src="/Content/images/cause-1.jpg" alt="">
+                                    <img src="images/cause-1.jpg" alt="">
 
                                     <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                         <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
@@ -402,7 +396,7 @@
                         <div class="swiper-slide">
                             <div class="cause-wrap">
                                 <figure class="m-0">
-                                    <img src="/Content/images/cause-2.jpg" alt="">
+                                    <img src="images/cause-2.jpg" alt="">
 
                                     <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                         <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
@@ -444,7 +438,7 @@
                         <div class="swiper-slide">
                             <div class="cause-wrap">
                                 <figure class="m-0">
-                                    <img src="/Content/images/cause-3.jpg" alt="">
+                                    <img src="images/cause-3.jpg" alt="">
 
                                     <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                         <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
@@ -486,7 +480,7 @@
                         <div class="swiper-slide">
                             <div class="cause-wrap">
                                 <figure class="m-0">
-                                    <img src="/Content/images/cause-1.jpg" alt="">
+                                    <img src="images/cause-1.jpg" alt="">
 
                                     <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                         <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
@@ -528,7 +522,7 @@
                         <div class="swiper-slide">
                             <div class="cause-wrap">
                                 <figure class="m-0">
-                                    <img src="/Content/images/cause-2.jpg" alt="">
+                                    <img src="images/cause-2.jpg" alt="">
 
                                     <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                         <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
@@ -570,7 +564,7 @@
                         <div class="swiper-slide">
                             <div class="cause-wrap">
                                 <figure class="m-0">
-                                    <img src="/Content/images/cause-3.jpg" alt="">
+                                    <img src="images/cause-3.jpg" alt="">
 
                                     <div class="figure-overlay d-flex justify-content-center align-items-center position-absolute w-100 h-100">
                                         <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
@@ -640,7 +634,7 @@
                     <div class="col-12 col-sm-4 mt-5 mt-lg-0">
                         <div class="counter-box">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="/Content/images/teamwork.png" alt="">
+                                <img src="images/teamwork.png" alt="">
                             </div>
 
                             <div class="d-flex justify-content-center align-items-baseline">
@@ -655,7 +649,7 @@
                     <div class="col-12 col-sm-4 mt-5 mt-lg-0">
                         <div class="counter-box">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="/Content/images/donation.png" alt="">
+                                <img src="images/donation.png" alt="">
                             </div>
 
                             <div class="d-flex justify-content-center align-items-baseline">
@@ -669,7 +663,7 @@
                     <div class="col-12 col-sm-4 mt-5 mt-lg-0">
                         <div class="counter-box">
                             <div class="d-flex justify-content-center align-items-center">
-                                <img src="/Content/images/dove.png" alt="">
+                                <img src="images/dove.png" alt="">
                             </div>
 
                             <div class="d-flex justify-content-center align-items-baseline">
