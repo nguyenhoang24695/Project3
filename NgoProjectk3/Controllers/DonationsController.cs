@@ -18,6 +18,7 @@ using NgoProjectk3.DataContext;
 using NgoProjectk3.Models;
 using PayPalCheckoutSdk.Core;
 using PayPalCheckoutSdk.Orders;
+using HttpResponse = BraintreeHttp.HttpResponse;
 
 namespace NgoProjectk3.Controllers
 {
@@ -128,6 +129,8 @@ namespace NgoProjectk3.Controllers
             return RedirectToAction("Index");
         }
 
+
+       
         // POST: Donations/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -142,15 +145,28 @@ namespace NgoProjectk3.Controllers
             var PAYPAL_ORDER_API = "https://api.sandbox.paypal.com/v2/checkout/orders/";
             var plainTextBytes = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1")
                 .GetBytes(username + ":" + password));
-            var basicAuth = "AcigcYMYURz24hIUQyQFMlO-mG93g4KpO-P1l2SZOYW3ZIH2CV-Hy20QjJz0YkLedaqO9VHL2ylh8p8Y:ECBwMwy6PMS9njelhXRAp2_ExRHDEJ0dr6qTMIrA43QCz1l3MpvDI20ZYWkf1Cz32Vl3-gidqf5e4jDk";
-
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", "Basic " + plainTextBytes);
-            //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("QWNpZ2NZTVlVUnoyNGhJVVF5UUZNbE8tbUc5M2c0S3BPLVAxbDJTWk9ZVzNaSUgyQ1YtSHkyMFFqSnowWWtMZWRhcU85VkhMMnlsaDhwOFk6RUNCd013eTZQTVM5bmplbGhYUkFwMl9FeFJIREVKMGRyNnFUTUlyQTQzUUN6MWwzTXB2REkyMFpZV2tmMUN6MzJWbDMtZ2lkcWY1ZTRqRGs=");
-            //var content = new StringContent("grant_type = client_credentials");
-            StringContent content = new StringContent(JsonConvert.SerializeObject(new PaypalAccess() { grant_type = "client_credentials" }), Encoding.UTF8, "application/x-www-form-urlencoded");
-            var resultAuth = await client.PostAsync(PAYPAL_OAUTH_API, content);
-            return Json(resultAuth);
+            var dict = new Dictionary<string, string>();
+            dict.Add("grant_type", "client_credentials");
+            //var req = new HttpRequestMessage(HttpMethod.Post, PAYPAL_OAUTH_API) { Content = new FormUrlEncodedContent(dict) };
+            //var content = client.SendAsync(req).Result.Content.ReadAsStringAsync();
+            var resultAuth = await client.PostAsync(PAYPAL_OAUTH_API, new FormUrlEncodedContent(dict));
+            //JObject json = JObject.Parse(JsonConvert.SerializeObject(resultAuth.Content.));
+            var paypalAccess = JsonConvert.DeserializeObject<PaypalAccess>(resultAuth.Content.ReadAsStringAsync().Result);
+            //return Json(paypalAccess);
+            //
+            HttpClient clientOrder = new HttpClient();
+            clientOrder.DefaultRequestHeaders.Add("Authorization", "Bearer " + paypalAccess.access_token);
+            var OrderInfo = clientOrder.GetAsync(PAYPAL_ORDER_API + paypal.OrderID).Result.Content.ReadAsStringAsync().Result;
+            var a = JObject.Parse(OrderInfo);
+            if (a["status"].ToString() == "COMPLETED")
+            {
+                Response.StatusCode = (int) HttpStatusCode.OK;
+                return Json("OK");
+            }
+            Response.StatusCode = (int) HttpStatusCode.Forbidden;
+            return Json(a["status"].ToString());
 
 
             //////////////////////////////////////////////////////////////////

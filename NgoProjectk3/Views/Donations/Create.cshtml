@@ -34,14 +34,14 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Amount, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control",id = "amountMoney" } })
             @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
+            <input type="submit" value="Create" class="btn btn-default" id="submitBtn" />
         </div>
     </div>
     <div id="paypal-button-container"></div>
@@ -51,14 +51,14 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: '12'
-                        }
+                            value: document.getElementById("amountMoney").value
+            }
                     }]
                 });
             },
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {
-                    alert('Transaction completed by ' + details.payer.name.given_name);
+                    //alert('Transaction completed by ' + details.payer.name.given_name);
                     // Call your server to save the transaction
                     //return fetch('PaypalResponse', {
                     //    contentType : "application/json",
@@ -77,9 +77,7 @@
                                    orderID: data.orderID
                                }),
                         success: function (data, textStatus, jqXHR) {
-                            alert("ok");
-                            console.log(data);
-
+                            document.getElementById("submitBtn").click();
                         },
                         error: function (jqXHR, exception) {
                             console.log('An error happened. An subject wasn`t created');
