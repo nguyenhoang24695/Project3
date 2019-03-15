@@ -14,6 +14,7 @@ namespace NgoProjectk3.Models
             this.CreatedAt = DateTime.Now;
             this.UpdatedAt = DateTime.Now;
             this.Status = ProgramStatus.Active;
+            this.DonatedMoney = 0;
         }
         [Key]
         public int Id { get; set; }
@@ -22,6 +23,7 @@ namespace NgoProjectk3.Models
         public string Content { get; set; }
         [DisplayName("FundRaising Money")]
         public long Amount { get; set; }
+        public long? DonatedMoney { get; set; }
 
         public string ThumbnailUrl { get; set; }
         public ProgramStatus Status { get; set; }

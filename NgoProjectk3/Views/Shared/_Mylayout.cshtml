@@ -22,7 +22,7 @@
     <link rel="stylesheet" href=@Url.Content("/Content/css/swiper.min.css")>
 
     <!-- Styles -->
-    <link rel="stylesheet" href=@Url.Content("/Content/style.css")>
+    <link rel="stylesheet" href=@Url.Content("/Content/css/style.css")>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 
     <script src="https://www.paypal.com/sdk/js?client-id=AcigcYMYURz24hIUQyQFMlO-mG93g4KpO-P1l2SZOYW3ZIH2CV-Hy20QjJz0YkLedaqO9VHL2ylh8p8Y">
@@ -57,17 +57,52 @@
                 <div class="row">
                     <div class="col-12 d-flex flex-wrap justify-content-between align-items-center">
                         <div class="site-branding d-flex align-items-center">
-                            <a class="d-block" href="index.html" rel="home"><img class="d-block" src="/Content/images/logo.png" alt="logo"></a>
+                            <a class="d-block" href="/" rel="home"><img class="d-block" src="/Content/images/logo.png" alt="logo"></a>
                         </div><!-- .site-branding -->
 
                         <nav class="site-navigation d-flex justify-content-end align-items-center">
                             <ul class="d-flex flex-column flex-lg-row justify-content-lg-end align-content-center">
-                                <li class="current-menu-item"><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About us</a></li>
-                                <li><a href="causes.html">Causes</a></li>
-                                <li><a href="portfolio.html">Gallery</a></li>
-                                <li><a href="news.html">News</a></li>
-                                <li><a href="contact.html">Contact</a></li>
+                                @if (ViewBag.Current == "Home")
+                                {
+                                    <li class="current-menu-item"><a href="/">Home</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/">Home</a></li>
+                                }
+                                @if (ViewBag.Current == "About")
+                                {
+                                    <li class="current-menu-item"><a href="/About">About us</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/About">About us</a></li>
+                                }
+
+                                @if (ViewBag.Current == "Causes")
+                                {
+                                    <li class="current-menu-item"><a href="/Causes">Causes</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Causes">Causes</a></li>
+                                }
+                                @if (ViewBag.Current == "News")
+                                {
+                                    <li class="current-menu-item"><a href="/News">News</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/News">News</a></li>
+                                }
+                                @if (ViewBag.Current == "Contact")
+                                {
+                                    <li class="current-menu-item"><a href="/Contact">Contact</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Contact">Contact</a></li>
+                                }
                             </ul>
                         </nav><!-- .site-navigation -->
 
