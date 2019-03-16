@@ -22,7 +22,7 @@
 <table class="table table-bordered fon">
     <thead>
         <tr>
-            <th class="thead-dark">
+            <th>
                 @Html.DisplayNameFor(model => model.DonorId)
             </th>
             <th>
@@ -71,17 +71,17 @@
             @Html.DisplayFor(model => model.DeletedAt)
         </td>
 
-        <td class="btn-group-sm"></td>
+        <td class="btn-group-sm">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary", @style = "color:white;" })
+        </td>
 
     </tr>
 
 
 </table>
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id } ,new { @class = "btn btn-info ", @style = "color:white;" }) |
-    @Html.ActionLink("Back", "Index", new {@class= "btn btn-primary", @style = "color:white;" }    
-
-
-    )
-</p>
+<div class="bt-sm">
+    <p>
+        @Html.ActionLink("Black", "Index", new { id = Model.Id }, new { @class = "btn btn-dark", @style = "color:white;" })
+       
+    </p>
+</div>

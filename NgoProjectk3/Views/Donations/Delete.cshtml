@@ -11,71 +11,79 @@
 <div>
     <h4>Donation</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.DonorId)
-        </dt>
+    <table class="table table-bordered fon">
+        <thead>
+            <tr>
+                <th class="thead-dark">
+                    @Html.DisplayNameFor(model => model.DonorId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ProgramId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeletedAt)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
 
-        <dd>
-            @Html.DisplayFor(model => model.DonorId)
-        </dd>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.DonorId)
+            </td>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ProgramId)
-        </dt>
+            <td>
+                @Html.DisplayFor(model => model.ProgramId)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.UpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DeletedAt)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.ProgramId)
-        </dd>
+            <td class="btn-group-sm">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
+                    <div class="form-actions no-color btn-group-sm" >
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                       
+                    </div>
+                }
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
+    </table>
+    <div class="bt-sm">
+        <p>
+            @Html.ActionLink("Black", "Index", new { id = Model.Id }, new { @class = "btn btn-dark", @style = "color:white;" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
+        </p>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletedAt)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
 </div>

@@ -14,10 +14,10 @@
 </div>
 <br />
 
-
-    <table class="table table-bordered fon" ">
+<div style="overflow-x:auto;">
+    <table class="table table-bordered fon">
         <thead>
-            <tr >
+            <tr>
                 <th class="thead-dark">
                     @Html.DisplayNameFor(model => model.DonorId)
                 </th>
@@ -44,40 +44,40 @@
         </thead>
         @foreach (var item in Model)
         {
-        <tr >
-            <td>
-                @Html.DisplayFor(modelItem => item.DonorId)
-            </td>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonorId)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Amount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeletedAt)
-            </td>
-           
-                <td class="btn-group-sm" >
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProgramId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Amount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UpdatedAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DeletedAt)
+                </td>
+
+                <td class="btn-group-sm">
 
                     @Html.ActionLink("Editt", "Edit", new { id = item.Id }, new { @class = "btn btn-info ", @style = "color:white;", }) |
                     @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success ", @style = "color:white" }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger ", @style = "color:white" })
 
                 </td>
-            
-        </tr>
+
+            </tr>
         }
 
     </table>
-
+</div>
