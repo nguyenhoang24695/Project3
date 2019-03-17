@@ -1061,6 +1061,9 @@ ul.tabs-nav .tab-nav.active {
 .our-causes .cause-wrap .fund-raised {
     margin-top: 48px;
 }
+.tabhi{
+    white-space:nowrap;
+}
 .family{
     font-family:Arial;
 }

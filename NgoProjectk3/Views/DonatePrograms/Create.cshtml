@@ -6,77 +6,72 @@
 }
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-   
 
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <from>
-        <h2>Create DonateProgram</h2>
-        <br />
-        <br />
-        <div class="form-row justify-content-center">
-            <div class="form-group col-md-2">
-                <label class="font_">Category Charity<span>(*)</span></label>
-                @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-md-8">
-                <label class="font_">Title Program Charity<span>(*)</span></label>
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "input Title Program Charity !" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="form-group col-md-5">
-                <label class="font_">Fundraising Money<span>($USD)</span></label>
-                @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control ", @min = "0", @placeholder = "$USD" } })
-                @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-md-5">
-                <label class="font_">Thumbnai<span>(URL)</span></label>
-                @Html.EditorFor(model => model.ThumbnailUrl, new { htmlAttributes = new { @class = "form-control ", @min = "0", @placeholder = "https://example.com/users" } })
-                @Html.ValidationMessageFor(model => model.ThumbnailUrl, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="form-group col-md-10">
-                <label class="font_">Content<span>(Charity)</span></label>
-                @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @cols = 80, @rows = 6, @placeholder = "Content Event Charity !" })
-                @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-row justify-content-center">
-            <div class="form-group col-md-5">
-                <label class="font_"><span>(StartedAt)</span></label>
-                @Html.EditorFor(model => model.StartedAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.StartedAt, "", new { @class = "text-danger" })
-            </div>
-            <div class="form-group col-md-5">
-                <label class="font_"><span>(EndedAt)</span></label>
-                @Html.EditorFor(model => model.EndedAt, new { htmlAttributes = new { @class = "form-control " } })
-                @Html.ValidationMessageFor(model => model.EndedAt, "", new { @class = "text-danger" })
-            </div>
+    <div class="form-horizontal">
 
-        </div>
-        <div class="row justify-content-center">
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <from>
+            <h2>Create DonateProgram</h2>
+            <br />
+            <br />
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-2">
+                    <label class="font_">Category Charity<span>(*)</span></label>
+                    @Html.DropDownList("CategoryId", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-8">
+                    <label class="font_">Title Program Charity<span>(*)</span></label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "input Title Program Charity !" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
-        </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-5">
+                    <label class="font_">Fundraising Money<span>($USD)</span></label>
+                    @Html.EditorFor(model => model.Amount, new { htmlAttributes = new { @class = "form-control ", @min = "0", @placeholder = "$USD" } })
+                    @Html.ValidationMessageFor(model => model.Amount, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="font_">Thumbnai<span>(URL)</span></label>
+                    @Html.EditorFor(model => model.ThumbnailUrl, new { htmlAttributes = new { @class = "form-control ", @min = "0", @placeholder = "https://example.com/users" } })
+                    @Html.ValidationMessageFor(model => model.ThumbnailUrl, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-10">
+                    <label class="font_">Content<span>(Charity)</span></label>
+                    @Html.TextAreaFor(model => model.Content, new { @class = "form-control", @cols = 80, @rows = 6, @placeholder = "Content Event Charity !" })
+                    @Html.ValidationMessageFor(model => model.Content, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-row justify-content-center">
+                <div class="form-group col-md-5">
+                    <label class="font_"><span>(StartedAt)</span></label>
+                    @Html.EditorFor(model => model.StartedAt, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.StartedAt, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group col-md-5">
+                    <label class="font_"><span>(EndedAt)</span></label>
+                    @Html.EditorFor(model => model.EndedAt, new { htmlAttributes = new { @class = "form-control " } })
+                    @Html.ValidationMessageFor(model => model.EndedAt, "", new { @class = "text-danger" })
+                </div>
 
-    </from>
-</div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+
+        </from>
+    </div>
 }
-
-<div>
-    <img src="https://img.icons8.com/windows/32/000000/circled-left.png">
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
