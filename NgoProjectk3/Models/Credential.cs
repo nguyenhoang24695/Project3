@@ -15,6 +15,7 @@ namespace NgoProjectk3.Models
         }
         [Key]
         [Required]
+        public int Id { get; set; }
         public int OwnerId { get; set; }
         public string AccessToken { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -1,8 +1,10 @@
-﻿@model NgoProjectk3.Models.Donation
+﻿@using NgoProjectk3.Models
+@model NgoProjectk3.Models.Donation
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_Mylayout.cshtml";
+    var dp = ViewBag.DonateProgram as DonateProgram;
 }
 
 
@@ -21,7 +23,9 @@
             <div class="form-row justify-content-center">
                 <div class="form-group col-md-3">
                     <label class="font_">Donor<span>(*)</span></label>
-                    @Html.DropDownList("DonorId", null, htmlAttributes: new { @class = "form-control" })
+                    @*@Html.DropDownList("DonorId", null, htmlAttributes: new { @class = "form-control" })*@
+                    <input disabled="disabled" class="form-control" type="text" name="DonorName" value="" id="DonorName"/>
+                    <input class="form-control" type="hidden" name="DonorId" value="" id="DonorId" />
                     @Html.ValidationMessageFor(model => model.DonorId, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group col-md-5">
@@ -35,25 +39,50 @@
 
             <div class="form-group col-md-8">
                 <label class="font_">Program Charity<span>(*)</span></label>
-                @Html.DropDownList("ProgramId", null, htmlAttributes: new { @class = "form-control" })
+                @*@Html.DropDownList("ProgramId", null, htmlAttributes: new { @class = "form-control" })*@
+                <input disabled="disabled" class="form-control" type="text" name="ProgramName" value="@dp.Name" />
+                <input class="form-control" type="hidden" name="ProgramId" value="@dp.Id" />
                 @Html.ValidationMessageFor(model => model.ProgramId, "", new { @class = "text-danger" })
 
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" id="submitBtn" style="visibility: hidden;" />
+                <input type="submit" value="Create" class="btn btn-default" id="submitBtn" style="visibility: visible;" />
             </div>
         </div>
         <div class="form-row justify-content-center">
             <div class="form-group col-md-6">
                 <div id="paypal-button-container"></div>
             </div>
-            
-
         </div>
        
         <script>
+            $(document).ready(function() {
+                var token = localStorage.getItem('tokenkey');
+                var data = {
+                    'AccessToken': token
+                }
+                $.ajax({
+                    method: 'POST',
+                    url: '/accounts/checkLogin',
+                    contentType: 'application/json',
+                    header: {
+                        'content-type': 'application/json',
+                        'Authorization': 'Basic ' + token,
+                    },
+                    data: JSON.stringify(data),
+                    success: function(resp) {
+                        document.getElementById("DonorId").value = resp.Id;
+                        document.getElementById("DonorName").value = resp.UserName;
+                        //window.location.href = "Index";
+                    },
+                    error: function(jqXHR, exception) {
+                        window.location.href = "/accounts/login";
+                    }
+                });
+            });
+            
             paypal.Buttons({
                 createOrder: function (data, actions) {
                     return actions.order.create({
@@ -95,6 +124,7 @@
                     });
                 }
             }).render('#paypal-button-container');
+
         </script>
     </div>
 }

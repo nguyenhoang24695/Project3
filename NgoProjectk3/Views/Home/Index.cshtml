@@ -11,7 +11,7 @@
         @foreach (var item in Model)
         {
             <div class="swiper-slide hero-content-wrap">
-                <img src="@Html.DisplayFor(modelItem => item.ThumbnailUrl)" alt="">
+                <img style="max-height: 1000px" src="@Html.DisplayFor(modelItem => item.ThumbnailUrl)" alt="">
 
                 <div class="hero-content-overlay position-absolute w-100 h-100">
                     <div class="container h-100">
@@ -23,12 +23,12 @@
                                 </header><!-- .entry-header -->
 
                                 <div class="entry-content mt-4">
-                                    <p>@Html.DisplayFor(modelItem => item.Content)</p>
+                                    <p>@item.Content.Substring(0, Math.Min(item.Content.Length, 450))...</p>
                                 </div><!-- .entry-content -->
 
                                 <footer class="entry-footer d-flex flex-wrap align-items-center mt-5">
-                                    <a href="#" class="btn gradient-bg mr-2">Donate Now</a>
-                                    <a href="#" class="btn orange-border">Read More</a>
+                                    <a href="/causes/create?donateProgramId=@item.Id" class="btn gradient-bg mr-2">Donate Now</a>
+                                    <a href="/donatePrograms/Details/@item.Id" class="btn orange-border">Read More</a>
                                 </footer><!-- .entry-footer -->
                             </div><!-- .col -->
                         </div><!-- .row -->

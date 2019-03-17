@@ -59,7 +59,7 @@ namespace NgoProjectk3.Controllers
                 db.Accounts.Add(account);
                 //return Json(account);
                 db.SaveChanges();
-                return RedirectToAction("/Home");
+                return RedirectToAction("/");
             }
 
             return View(account);
@@ -132,7 +132,7 @@ namespace NgoProjectk3.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        //[ValidateAntiForgeryToken]
         public ActionResult Login([Bind(Include = "UserName,Password")] Account account)
         {
             
@@ -165,6 +165,21 @@ namespace NgoProjectk3.Controllers
             }
 
             return View(account);
+        }
+
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult CheckLogin([Bind(Include = "AccessToken")] Credential cr)
+        {
+            var currenCr = db.Credentials.SingleOrDefault(c => c.AccessToken == cr.AccessToken);
+            var currentAccount = db.Accounts.SingleOrDefault(a => a.Id == currenCr.OwnerId);
+            if (currentAccount != null)
+            {
+                Response.StatusCode = (int) HttpStatusCode.OK;
+                return Json(currentAccount);
+            }
+
+            return HttpNotFound();
         }
 
 

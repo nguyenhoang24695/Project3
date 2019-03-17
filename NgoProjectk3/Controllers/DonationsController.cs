@@ -52,8 +52,25 @@ namespace NgoProjectk3.Controllers
         public ActionResult Create()
         {
             ViewBag.DonorId = new SelectList(db.Accounts, "Id", "FullName");
-            ViewBag.ProgramId = new SelectList(db.DonatePrograms, "Id", "Name");
-            return View();
+            try
+            {
+                var id = int.Parse(Request.QueryString["donateProgramId"]);
+                var donateProgram = db.DonatePrograms.SingleOrDefault(dp => dp.Id == id);
+                if (donateProgram != null)
+                {
+                    ViewBag.DonateProgram = donateProgram;
+                    return View();
+                }
+                
+            }
+            catch (Exception e)
+            {
+                return Redirect("/");
+            }
+
+            ;
+
+            return Redirect("/");
         }
 
         // POST: Donations/Create
@@ -61,7 +78,7 @@ namespace NgoProjectk3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,DonorId,ProgramId,Amount,Status,CreatedAt,UpdatedAt,DeletedAt")] Donation donation)
+        public async Task<ActionResult> Create([Bind(Include = "Id,DonorId,ProgramId,Amount,Status,CreatedAt,UpdatedAt,DeletedAt")] Donation donation)
         {
             if (ModelState.IsValid)
             {
@@ -69,8 +86,8 @@ namespace NgoProjectk3.Controllers
                 var currentProgram = db.DonatePrograms.Find(donation.ProgramId);
                 currentProgram.DonatedMoney += (long)donation.Amount;
                 db.DonatePrograms.AddOrUpdate(currentProgram);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                await db.SaveChangesAsync();
+                return Redirect("/");
             }
 
             return View(donation);

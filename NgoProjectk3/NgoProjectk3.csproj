@@ -68,6 +68,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -156,6 +157,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903171407538_InitialCreate.cs" />
+    <Compile Include="Migrations\201903171407538_InitialCreate.Designer.cs">
+      <DependentUpon>201903171407538_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903171435062_Initial.cs" />
+    <Compile Include="Migrations\201903171435062_Initial.Designer.cs">
+      <DependentUpon>201903171435062_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Credential.cs" />
@@ -342,6 +352,14 @@
       <Project>{A024820C-4E34-4FF1-8479-7A33A6571112}</Project>
       <Name>SecurityHandle</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201903171407538_InitialCreate.resx">
+      <DependentUpon>201903171407538_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903171435062_Initial.resx">
+      <DependentUpon>201903171435062_Initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
