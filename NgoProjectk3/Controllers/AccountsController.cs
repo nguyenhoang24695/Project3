@@ -59,7 +59,7 @@ namespace NgoProjectk3.Controllers
                 db.Accounts.Add(account);
                 //return Json(account);
                 db.SaveChanges();
-                return RedirectToAction("/");
+                return RedirectToAction("Index", "Home");
             }
 
             return View(account);
