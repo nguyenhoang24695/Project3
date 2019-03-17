@@ -5,74 +5,89 @@
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
 
-<h2>Edit</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Category</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+    <form>
+        <div class="form-horizontal ">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <h2>Edit Categories</h2>
+            <div class="row justify-content-center">
+               
+                    
+                <div class="form-group col-md-7 ">
+                    <label class="font_">Name categories<span>(*)</span></label>
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control family" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+                    <div class="form-group col-md-2">
+                        <label class="font_">Status<span>(*)</span></label>
+                        @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control family" })
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                
             </div>
-        </div>
+            <br />
+            <div class="form-row justify-content-center">
+                
+                    <div class="form-group col-md-9">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                        <label class="font_">Description <span>(*)</span></label>
+                        @Html.TextAreaFor(model => model.Description, new { @class = "form-control family", @cols = 80, @rows = 10, @placeholder = "Content Event Charity !" })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
+                
             </div>
-        </div>
+            <div class="form-row justify-content-center">
+                
+                    <div class="form-group col-md-3">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EnumDropDownListFor(model => model.Status, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <label class="font_">CreateAt<span>(*)</span></label>
+                        @Html.EditorFor(model => model.CreatedAt, new { htmlAttributes = new { @class = "form-control family" } })
+                        @Html.ValidationMessageFor(model => model.CreatedAt, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label class="font_">UpdateAt<span>(*)</span></label>
+                        @Html.EditorFor(model => model.UpdatedAt, new { htmlAttributes = new { @class = "form-control family" } })
+                        @Html.ValidationMessageFor(model => model.UpdatedAt, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group col-md-3">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CreatedAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedAt, "", new { @class = "text-danger" })
+                        <label class="font_">DeleteAt<span>(*)</span></label>
+                        @Html.EditorFor(model => model.DeletedAt, new { htmlAttributes = new { @class = "form-control family" } })
+                        @Html.ValidationMessageFor(model => model.DeletedAt, "", new { @class = "text-danger" })
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row justify-content-center">
+                <div class="form-group family">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.UpdatedAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.UpdatedAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.UpdatedAt, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DeletedAt, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DeletedAt, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.DeletedAt, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
+
+    </form>
+
+
+
+
+
+
+
+
+
+
+   
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+    <div>
+        @Html.ActionLink("Black", "Index", new { id = Model.Id }, new { @class = "btn btn-dark", @style = "color:white;" })
+    </div>

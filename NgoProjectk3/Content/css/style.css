@@ -18,11 +18,11 @@ img {
     left: 50%;
     transform: translate(-50%,-50%);
 }
-.font_{
-    font-weight:bold;
-    color:black;
-    font-size:13px;
-
+.font_ {
+    font-weight: bold;
+    color: black;
+    font-family: 'Montserrat', sans-serif;
+    font-size:14px;
 }
 span {
     color: #f16725;
@@ -1061,7 +1061,9 @@ ul.tabs-nav .tab-nav.active {
 .our-causes .cause-wrap .fund-raised {
     margin-top: 48px;
 }
-
+.family{
+    font-family:Arial;
+}
 .our-causes .swiper-button-next,
 .our-causes .swiper-button-prev {
     width: 70px;
