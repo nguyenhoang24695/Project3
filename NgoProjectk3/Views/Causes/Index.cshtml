@@ -71,8 +71,15 @@
                                 <div class="tipWrap">
                                     <span class="tip"></span>
                                 </div><!-- .tipWrap -->
-                                
-                                <span class="fill" data-percentage="@(item.DonatedMoney*100/item.Amount)"></span>
+                                @if ((item.DonatedMoney * 100 / item.Amount) > 100)
+                                {
+                                    <span class="fill" data-percentage="100"></span>
+                                }
+                                else
+                                {
+                                    <span class="fill" data-percentage="@(item.DonatedMoney * 100 / item.Amount)"></span>
+                                }
+
                             </div><!-- .fund-raised-bar -->
                             <script>
                                 $('.featured-fund-raised-bar-@item.Id').barfiller({ barColor: '#ff5a00', duration: 1500 });
