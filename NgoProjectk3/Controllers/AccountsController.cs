@@ -151,9 +151,11 @@ namespace NgoProjectk3.Controllers
                     
                     return Json(cr);
                 }
+                Response.StatusCode = 404;
                 return Json("Wrong Password");
             }
-            return Json("Tài khoản không tồn tại");
+            Response.StatusCode = 404;
+            return Json("Account is not defined");
             
             if (ModelState.IsValid)
             {
@@ -172,12 +174,15 @@ namespace NgoProjectk3.Controllers
         public ActionResult CheckLogin([Bind(Include = "AccessToken")] Credential cr)
         {
             var currenCr = db.Credentials.SingleOrDefault(c => c.AccessToken == cr.AccessToken);
-            var currentAccount = db.Accounts.SingleOrDefault(a => a.Id == currenCr.OwnerId);
-            if (currentAccount != null)
+            if(currenCr != null)
             {
-                Response.StatusCode = (int) HttpStatusCode.OK;
-                return Json(currentAccount);
-            }
+                var currentAccount = db.Accounts.SingleOrDefault(a => a.Id == currenCr.OwnerId);
+                if (currentAccount != null)
+                {
+                    Response.StatusCode = (int)HttpStatusCode.OK;
+                    return Json(currentAccount);
+                }
+            }            
 
             return HttpNotFound();
         }
