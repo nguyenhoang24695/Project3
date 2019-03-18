@@ -1,6 +1,8 @@
 ﻿@model NgoProjectk3.Models.Donation
 
 @{
+    /**/
+
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
@@ -12,12 +14,6 @@
     <hr />
     <dl class="dl-horizontal"></dl>
 </div>
-
-
-
-
-
-
 
 <table class="table table-bordered fon">
     <thead>
@@ -74,14 +70,11 @@
         <td class="btn-group-sm">
             @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary", @style = "color:white;" })
         </td>
-
     </tr>
-
-
 </table>
 <div class="bt-sm">
     <p>
         @Html.ActionLink("Black", "Index", new { id = Model.Id }, new { @class = "btn btn-dark", @style = "color:white;" })
-       
+
     </p>
 </div>

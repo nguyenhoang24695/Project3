@@ -5,13 +5,13 @@
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Details Category</h2>
 
 <div>
-    <h4>Category</h4>
+   
     <hr />
     <div style="overflow-x:auto">
-        <table class="table table-bordered fon">
+        <table class="table table-bordered family">
             <thead>
                 <tr>
                     <th>
@@ -53,7 +53,7 @@
                 <td>
                     @Html.DisplayFor(model => model.DeletedAt)
                 </td>
-                <td class="btn-group-sm">
+                <td class="btn-group-sm tabhi">
                     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-primary", @style = "color:white;" })
                 </td>
             </tr>

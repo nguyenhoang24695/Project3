@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Table Account</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create", new { @class = "btn btn-dark", @style = "color:white;" })
@@ -103,10 +103,12 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.DeletedAt)
                 </td>
-                <td class="btn-group-sm family">
-                    @Html.ActionLink("Editt", "Edit", new { id = item.Id }, new { @class = "btn btn-info fon ", @style = "color:white;", })
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success fon", @style = "color:white" })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fon", @style = "color:white" })
+                <td class="btn-group-sm tabhi family">
+                    
+                        @Html.ActionLink("Editt", "Edit", new { id = item.Id }, new { @class = "btn btn-primary ", @style = "color:white;", }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success fon", @style = "color:white" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger fon", @style = "color:white" })
+                    
                 </td>
             </tr>
         }

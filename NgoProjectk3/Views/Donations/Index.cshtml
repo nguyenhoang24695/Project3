@@ -15,10 +15,10 @@
 <br />
 
 <div style="overflow-x:auto;">
-    <table class="table table-bordered fon">
+    <table class="table table-bordered family">
         <thead>
             <tr>
-                <th class="thead-dark">
+                <th>
                     @Html.DisplayNameFor(model => model.DonorId)
                 </th>
                 <th>
@@ -44,6 +44,7 @@
         </thead>
         @foreach (var item in Model)
         {
+        <tbody>
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.DonorId)
@@ -68,15 +69,16 @@
                     @Html.DisplayFor(modelItem => item.DeletedAt)
                 </td>
 
-                <td class="btn-group-sm">
+                <td class="text-center" style="white-space:nowrap;">
 
-                    @Html.ActionLink("Editt", "Edit", new { id = item.Id }, new { @class = "btn btn-info ", @style = "color:white;", }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success ", @style = "color:white" }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger ", @style = "color:white" })
+                    @Html.ActionLink("Editt", "Edit", new { id = item.Id }, new { @class = "btn btn-primary badge-pill", @style = "width:auto;color:white;", }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-success badge-pill ", @style = "width:auto;color:white" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger badge-pill ", @style = "width:auto;color:white" })
 
                 </td>
 
             </tr>
+        </tbody>
         }
 
     </table>

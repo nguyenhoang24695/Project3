@@ -10,90 +10,75 @@
 <div>
     <h4>DonateProgram</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
+    <table class="table table-bordered family" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EndedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CreatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UpdatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DeletedAt)
+                </th>
+            </tr>
+        </thead>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Category.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Content)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.StartedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.EndedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Amount)
+            </td>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
+            <td>
+                @Html.DisplayFor(model => model.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.UpdatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DeletedAt)
+            </td>
+            <td>
+                @Html.ActionLink("Editt", "Edit", new { id = Model.Id }, new { @class = "btn btn-info ", @style = "color:white;" })
+            </td>
+        </tr>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    </table>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Content)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StartedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.EndedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Amount)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Amount)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ThumbnailUrl)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ThumbnailUrl)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UpdatedAt)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DeletedAt)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DeletedAt)
-        </dd>
-
-    </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Black", "Index", new { id = Model.Id }, new { @class = "btn btn-dark", @style = "color:white;" })
 </p>
