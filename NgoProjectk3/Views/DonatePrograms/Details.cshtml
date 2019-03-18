@@ -4,79 +4,84 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Mylayout.cshtml";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>DonateProgram</h4>
     <hr />
-    <table class="table table-bordered family" style="width:100%">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Category.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Content)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.StartedAt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.EndedAt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Amount)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreatedAt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.UpdatedAt)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.DeletedAt)
-                </th>
-            </tr>
-        </thead>
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.Category.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Content)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.StartedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.EndedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.Amount)
-            </td>
+    <div class="container">
 
-            <td>
-                @Html.DisplayFor(model => model.CreatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.UpdatedAt)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.DeletedAt)
-            </td>
-            <td>
-                @Html.ActionLink("Editt", "Edit", new { id = Model.Id }, new { @class = "btn btn-info ", @style = "color:white;" })
-            </td>
-        </tr>
+        <!-- Portfolio Item Heading -->
+        <h2 class="my-4">
+            @Html.DisplayFor(model => model.Name)
+            
+        </h2>
+        <br />
+        <br />
 
-    </table>
+        <!-- Portfolio Item Row -->
+      
+        <div class="row">
+
+            <div class="col-md-8">
+                <img class="img-fluid" src="@Html.DisplayFor(model => model.ThumbnailUrl)" alt="">
+            </div>
+            <div class="col-md-4">
+               
+                <h3 class="my-3">program time</h3>
+                <svg-icon><src href="sprite.svg#si-glyph-note" /></svg-icon>
+               
+                    <div style="text-align:center">  <img src="https://img.icons8.com/office/16/000000/overtime.png" > form @Html.DisplayFor(model =>model.StartedAt) | 
+                    to <img src="https://img.icons8.com/office/16/000000/overtime.png"> </span> @Html.DisplayFor(model => model.EndedAt)
+</div>
+                <br />
+                <div style="text-align:center">
+                    <h2>Donate Money</h2>
+                     @Html.DisplayFor(model => model.Amount)<img src="https://img.icons8.com/office/16/000000/us-dollar.png">
+                </div>
+                    
+                  
+            </div>
+
+            <br />
+            <br />
+            <div class="col-md-12">
+                
+                <p>@Html.DisplayFor(model => model.Content)</p>
+            </div>
+
+        </div>
+        <!-- /.row -->
+        <!-- Related Projects Row -->
+        <h3 class="my-4">Related Projects</h3>
+
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+            <div class="col-md-3 col-sm-6 mb-4">
+                <a href="#">
+                    <img class="img-fluid" src="http://placehold.it/500x300" alt="">
+                </a>
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+    </div>
 
 </div>
 <p>

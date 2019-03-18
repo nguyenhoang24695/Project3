@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href=@Url.Content("/Content/css/bootstrap.min.css")>
 
     <!-- FontAwesome CSS -->
@@ -23,6 +24,8 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href=@Url.Content("/Content/css/style.css")>
+
+
     <style>
         .tablehi{
             white-space:nowrap;
@@ -38,7 +41,7 @@
         <div class="top-header-bar">
             <div class="container">
                 <div class="row flex-wrap justify-content-center justify-content-lg-between align-items-lg-center">
-                    <div class="col-12 col-lg-8 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
+                    <div class="col-12 col-lg-6 d-none d-md-flex flex-wrap justify-content-center justify-content-lg-start mb-3 mb-lg-0">
                         <div class="header-bar-email">
                             MAIL: <a href="#">ngocharity2019@gmail.com</a>
                         </div><!-- .header-bar-email -->
@@ -48,15 +51,18 @@
                         </div><!-- .header-bar-text -->
                     </div><!-- .col -->
 
-                    <div class="col-12 col-lg-4 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
+                    <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
                         <div class="donate-btn">
-                            <a href="#">Donate Now</a>
+                           <a @Html.ActionLink("Login","Login","Accounts")
+                            <a @Html.ActionLink("Register","Create","Accounts")
+
                         </div><!-- .donate-btn -->
                     </div><!-- .col -->
                 </div><!-- .row -->
             </div><!-- .container -->
         </div><!-- .top-header-bar -->
-
+        
+  
         <div class="nav-bar">
             <div class="container">
                 <div class="row">
