@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1>Our Causes</h1>
+                
             </div><!-- .col -->
         </div><!-- .row -->
     </div><!-- .container -->
@@ -31,18 +31,21 @@
                 <div class="col-12 col-lg-6">
                     <div class="cause-wrap d-flex flex-wrap justify-content-between">
                         <figure class="m-0">
-                            <img src="@item.ThumbnailUrl" alt="" style="max-width: 270px">
+                            <a href="/donatePrograms/Details/@item.Id" ><img src="@item.ThumbnailUrl" alt="" style="max-width: 270px"></a>
+                            
+
                         </figure>
 
                         <div class="cause-content-wrap">
                             <header class="entry-header d-flex flex-wrap align-items-center">
                                 @if (item.Name.Length > 20)
                                 {
-                                    <h3 class="entry-title w-100 m-0"><a href="#">@item.Name.Substring(0, Math.Min(item.Name.Length, 17))...</a></h3>
+                                   
+                                    <h3 class="entry-title w-100 m-0"><a href="/donatePrograms/Details/@item.Id">@item.Name.Substring(0, Math.Min(item.Name.Length, 17))...</a></h3>
                                 }
                                 else
                                 {
-                                    <h3 class="entry-title w-100 m-0"><a href="#">@item.Name</a></h3>
+                                    <h3 class="entry-title w-100 m-0"><a href="/donatePrograms/Details/@item.Id">@item.Name</a></h3>
                                 }
 
 
@@ -62,7 +65,7 @@
                             </div><!-- .entry-content -->
 
                             <div class="entry-footer mt-5">
-                                <a href="/donations/create?donateProgramId=@item.Id" class="btn gradient-bg mr-2">Donate Now</a>
+                                <a href="/donations/create?donateProgramId=@item.Id" class="btn gradient-bg mr-2">Donate</a>
                             </div><!-- .entry-footer -->
                         </div><!-- .cause-content-wrap -->
 
