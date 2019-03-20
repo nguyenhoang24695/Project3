@@ -52,9 +52,12 @@
                     </div><!-- .col -->
 
                     <div class="col-12 col-lg-6 d-flex flex-wrap justify-content-center justify-content-lg-end align-items-center">
-                        <div class="donate-btn">
+                        <div class="donate-btn" id="no-token">
                              @Html.ActionLink("Login", "Login", "Accounts")
                              @Html.ActionLink("Register","Create","Accounts")
+                        </div><!-- .donate-btn -->
+                        <div class="donate-btn" id="have-token" style="display: none;">
+                            <a href="javascript:void(0)" id="logoutHandle">Logout</a>
                         </div><!-- .donate-btn -->
                     </div><!-- .col -->
                 </div><!-- .row -->
@@ -223,6 +226,73 @@
     <script type='text/javascript' src='/Content/js/jquery.countTo.min.js'></script>
     <script type='text/javascript' src='/Content/js/jquery.barfiller.js'></script>
     <script type='text/javascript' src='/Content/js/custom.js'></script>
+<script>
+    // login - logout
+    var token_key = window.localStorage.getItem("tokenkey");
+    var data = {
+        'AccessToken': token_key
+    };
+    if (token_key == null) {
+        $("#have-token").hide();
+        $("#no-token").show();
+    }
+    else {
+        $.ajax({
+            method: 'POST',
+            url: '/accounts/checklogin/',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (resp) {
+                $("#no-token").hide();
+                $("#have-token").show();
+                //var userId = resp.ownerId;
+                //var htmlContent = "";
+                //$.ajax({
+                //    method: 'GET',
+                //    url: '/NormalUsers/Details/' + userId,
+                //    success: function (resp) {
+                //        $("#userProfile").text(resp.fullName);
+                //        //htmlContent += '<i class="flaticon-profile"></i>';
+                //        //htmlContent += '<a asp-controller="Home" asp-action="SignIn"> Sign In or Create Account</a>';
+                //        //$("#sub-menu").html(htmlContent);
+                //        $("#no-token").hide();
+                //        $("#have-token").show();
+                //    },
+                //    error: function (resp, jqXHR, exception) {
+                //        console.log("Please sign in again.");
+                //        $("#have-token").hide();
+                //        $("#no-token").show();
+                //    }
+                //});
+            },
+            error: function (resp, jqXHR, exception) {
+                console.log(resp.responseText);
+                console.log(resp.responseJSON);
+                console.log(resp.status);
+                console.log(resp);
+            }
+        });
+    }
+    $("#logoutHandle").on('click', function() {
+        
+        $.ajax({
+            method: 'GET',
+            url: '/accounts/Logout/?token=' + localStorage.getItem("tokenkey"),
+            
+            //contentType: 'application/json',
+            success: function (resp) {
+                localStorage.removeItem("token-key");
+                window.location.reload();
+            },
+            error: function (resp, jqXHR, exception) {
+                console.log(resp.responseText);
+                localStorage.removeItem("token-key");
+                console.log("Please sign in again.");
 
+            }
+        });
+       
+    });
+</script>
 </body>
 </html>

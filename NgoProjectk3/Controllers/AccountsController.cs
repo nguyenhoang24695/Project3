@@ -127,6 +127,17 @@ namespace NgoProjectk3.Controllers
         {
             return View();
         }
+        // GET: Logout
+        
+        public ActionResult Logout()
+        {
+            var token = Request.QueryString["token"];
+            var currentCr = db.Credentials.SingleOrDefault(cr => cr.AccessToken == token);
+            db.Credentials.Remove(currentCr);
+            db.SaveChanges();
+
+            return Json("Success",JsonRequestBehavior.AllowGet);
+        }
 
         // POST: Accounts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
